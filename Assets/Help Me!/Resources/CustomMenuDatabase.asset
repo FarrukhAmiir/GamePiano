@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c301b729a3d9b44b9b84811db95a4f2f, type: 3}
+  m_Name: CustomMenuDatabase
+  m_EditorClassIdentifier: 
+  _inputValues:
+    ScenePath1: Assets/Scenes/IntroVideo.unity
+    ScenePath2: Assets/Scenes/MainMenu.unity
+    ScenePath3: Assets/Scenes/Gameplay1.unity
+    PrefabSavePath: Assets/
