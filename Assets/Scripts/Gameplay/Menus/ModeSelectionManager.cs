@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ModeSelectionManager : MonoBehaviour
 {
@@ -64,16 +65,10 @@ public class ModeSelectionManager : MonoBehaviour
 
     public void OnButtonPress(string ID)
     {
-        SoundManager.Instance.PlaySound(GameManager.SoundState.BUTTONCLICKSOUND);
-        switch (ID)
+        if (ID == "Back")
         {
-            case "Back": 
-                
-                Instantiate(Resources.Load(Constants.MainMenuUI));
-
-                Destroy(gameObject);
-                break;
-        }		
+            SceneManager.LoadScene(0);
+        }
 
     }
 
