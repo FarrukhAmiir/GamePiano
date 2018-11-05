@@ -65,10 +65,14 @@ public class ModeSelectionManager : MonoBehaviour
 
     public void OnButtonPress(string ID)
     {
-        if (ID == "Back")
+       
+        switch (ID)
         {
-            SceneManager.LoadScene(0);
-        }
+            case "Back":
+
+                SceneManager.LoadScene(0);
+                break;
+        }		
 
     }
 

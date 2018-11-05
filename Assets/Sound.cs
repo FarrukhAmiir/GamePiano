@@ -56,14 +56,14 @@ public class Sound : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse enter");
+       
         transform.GetComponent<Image>().sprite = Pressed;
         OnClick();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exit");
+       
         transform.GetComponent<Image>().sprite = UnPressed;
 
     }

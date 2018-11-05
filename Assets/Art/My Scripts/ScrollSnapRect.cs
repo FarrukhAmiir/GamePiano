@@ -15,6 +15,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     public float fastSwipeThresholdTime = 0.3f;
     [Tooltip("Threshold time for fast swipe in (unscaled) pixels")]
     public int fastSwipeThresholdDistance = 100;
+    public GameObject[] Splash;
     [Tooltip("How fast will page lerp to target position")]
     public float decelerationRate = 10f;
     [Tooltip("Button to go to the previous page (optional)")]
@@ -27,7 +28,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     public Sprite selectedPage;
     [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
-
+    public GameObject DropDownn,DropButton,piano,UpButton;
     // fast swipes should be fast and short. If too long, then it is not fast swipe
     private int _fastSwipeThresholdMaxLimit;
 
@@ -58,7 +59,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     private int _previousPageSelectionIndex;
     // container with Image components - one Image for each page
     private List<Image> _pageSelectionImages;
-
+    int count ;
     //------------------------------------------------------------------------
     void Start() {
         _scrollRectComponent = GetComponent<ScrollRect>();
@@ -84,9 +85,10 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         SetPage(startingPage);
        
         InitPageSelection();
-       
+        count = _pageCount-1;
         SetPageSelection(startingPage);
-        
+        Splash[count].SetActive(true);
+        prevButton.GetComponent<Button>().interactable = false;
         // prev and next buttons
         if (nextButton)
             nextButton.GetComponent<Button>().onClick.AddListener(() => { NextScreen(); });
@@ -116,6 +118,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 SetPageSelection(GetNearestPage());
             }
         }
+       
     }
 
     //------------------------------------------------------------------------
@@ -165,11 +168,12 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             {
                 childPosition = new Vector2(0f, -(i * height - containerHeight / 2 + offsetY));
             }
-            
-                Vector2 vec = new Vector2(10, 147);
+           
+                Vector2 vec = new Vector2(0, (173-i*4.2f));
                 child.anchoredPosition = childPosition;
                 _pagePositions.Add(childPosition + vec);
-           
+            
+
         }
        
     }
@@ -179,6 +183,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         aPageIndex = Mathf.Clamp(aPageIndex, 0, _pageCount - 1);
         _container.anchoredPosition = _pagePositions[aPageIndex];
         _currentPage = aPageIndex;
+        
     }
 
     //------------------------------------------------------------------------
@@ -233,7 +238,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
         _previousPageSelectionIndex = aPageIndex;
     }
-
+    
     //------------------------------------------------------------------------
     private void NextScreen()
     {
@@ -246,6 +251,8 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         {
             nextButton.GetComponent<Button>().interactable = false;
         }
+        Splash[count].SetActive(false);
+        Splash[--count].SetActive(true);
     }
 
     //------------------------------------------------------------------------
@@ -259,6 +266,8 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         {
             nextButton.GetComponent<Button>().interactable = true;
         }
+        Splash[count].SetActive(false);
+        Splash[++count].SetActive(true);
     }
 
     //------------------------------------------------------------------------
@@ -328,6 +337,22 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             if (_showPageSelection) {
                 SetPageSelection(GetNearestPage());
             }
+        }
+    }
+
+    public void OnClick(string name)
+    {
+        if(name == "DropDown")
+        {
+            DropDownn.SetActive(true);
+            UpButton.SetActive(true);
+            DropButton.SetActive(false);
+        }
+        if (name == "Up")
+        {
+            DropDownn.SetActive(false);
+            UpButton.SetActive(false);
+            DropButton.SetActive(true);
         }
     }
 }
