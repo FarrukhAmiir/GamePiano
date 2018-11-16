@@ -1,4 +1,0 @@
-Assets/Scenes/IntroVideo.unity
-Assets/Scenes/MainMenu.unity
-Assets/Scenes/Gameplay1.unity
-Assets/
