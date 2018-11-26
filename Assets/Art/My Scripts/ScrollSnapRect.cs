@@ -171,7 +171,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
            
                 Vector2 vec = new Vector2(0, (320-(i*11f)));
                 child.anchoredPosition = childPosition;
-                _pagePositions.Add(childPosition + vec);
+                _pagePositions.Add(childPosition+vec );
             
 
         }

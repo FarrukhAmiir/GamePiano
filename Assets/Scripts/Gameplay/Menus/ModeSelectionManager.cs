@@ -11,8 +11,8 @@ public class ModeSelectionManager : MonoBehaviour
 
     public void Start()
     {
-
-		GetComponent<Canvas> ().worldCamera = Camera.main;
+        bool deviceIsIphoneX = UnityEngine.iOS.Device.generation == UnityEngine.iOS.DeviceGeneration.iPhoneX;
+        GetComponent<Canvas> ().worldCamera = Camera.main;
         if (UserPrefs.IsSurvivalModeUnlocked)
         {
             SurvivalModeLocked.SetActive(false);

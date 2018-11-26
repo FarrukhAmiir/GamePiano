@@ -15,11 +15,9 @@ public class Sound : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Sprite UnPressed,Pressed;
     public void OnMouseOver()
     {
-        //OnClick();
-        ////do stuff
+        
     }
     void Start () {
-        //CreateInstances();
        
     }
 	
@@ -38,11 +36,7 @@ public class Sound : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 
 
-    public void OnButtonClicked(int buttonIndex)
-    {
-
-        transform.GetComponent<Image>().sprite = UnPressed;
-    }
+   
 
     public void OnPointerEnter(PointerEventData eventData)
     {
